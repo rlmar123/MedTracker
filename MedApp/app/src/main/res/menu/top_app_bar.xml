@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/favorite"
+        android:icon="@drawable/ic_launcher_background"
+
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nuy"
+        android:icon="@drawable/ic_launcher_background"
+        app:showAsAction="ifRoom" />
+
+</menu>
