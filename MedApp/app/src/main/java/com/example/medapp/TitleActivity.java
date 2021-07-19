@@ -27,16 +27,16 @@ public class TitleActivity extends AppCompatActivity implements PopupMenu.OnMenu
         
         AlphaAnimation myAnim = new AlphaAnimation(0.0f, 1.0f);
         // loading Animation from
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.spin_anim);
 
         myAnim.setDuration(1000);
         myAnim.setRepeatCount(Animation.INFINITE);
         myAnim.setRepeatMode(Animation.REVERSE);
 
 
-        animation.setDuration(1000);
+       /* animation.setDuration(1000);
         animation.setRepeatCount(Animation.INFINITE);
-        animation.setRepeatMode(Animation.REVERSE);
+        animation.setRepeatMode(Animation.REVERSE);*/
 
         title_text = findViewById(R.id.title_text);
         logo_text = findViewById(R.id.logo_text);
