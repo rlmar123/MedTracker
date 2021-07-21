@@ -50,14 +50,14 @@ public class DocInfoActivity extends AppCompatActivity implements PopupMenu.OnMe
                 Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
                 return true;*/
             case R.id.Doc_Info:
-                Toast.makeText(this, "Doctor Info selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "from doc info", Toast.LENGTH_SHORT).show();
              //   Intent intent = new Intent(TitleActivity.this, DocInfoActivity.class);
            //     startActivity(intent);
 
                 return true;
 
             case R.id.Refill:
-                Toast.makeText(this, "Refill", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "from the doctor", Toast.LENGTH_SHORT).show();
                 return true;
 
 

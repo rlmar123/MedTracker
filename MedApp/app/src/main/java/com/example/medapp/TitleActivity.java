@@ -27,7 +27,7 @@ public class TitleActivity extends AppCompatActivity implements PopupMenu.OnMenu
         
         AlphaAnimation myAnim = new AlphaAnimation(0.0f, 1.0f);
         // loading Animation from
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.spin_anim);
+        Animation logo_animation = AnimationUtils.loadAnimation(this, R.anim.spin_anim);
 
         myAnim.setDuration(1000);
         myAnim.setRepeatCount(Animation.INFINITE);
@@ -43,7 +43,7 @@ public class TitleActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
 
         title_text.startAnimation(myAnim);
-        logo_text.startAnimation(animation);
+        logo_text.startAnimation(logo_animation);
 
         ImageView title = findViewById(R.id.three_bars);
         ImageView settind = findViewById(R.id.the_setting);
@@ -97,7 +97,7 @@ public class TitleActivity extends AppCompatActivity implements PopupMenu.OnMenu
                 return true;
 
             case R.id.Refill:
-                Toast.makeText(this, "Item 3 selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Refill", Toast.LENGTH_SHORT).show();
                 return true;
 
 
