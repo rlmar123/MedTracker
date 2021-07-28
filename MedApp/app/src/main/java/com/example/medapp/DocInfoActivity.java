@@ -1,24 +1,87 @@
 package com.example.medapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.Calendar;
+
+import devs.mulham.horizontalcalendar.HorizontalCalendar;
+import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
+
 public class DocInfoActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener
 {
+
+    BottomNavigationView test_bar;
+    FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_info);
 
+        /* starts before 1 month from now */
+        Calendar startDate = Calendar.getInstance();
+        startDate.add(Calendar.MONTH, -1);
+
+        /* ends after 1 month from now */
+        Calendar endDate = Calendar.getInstance();
+        endDate.add(Calendar.MONTH, 1);
+
+        HorizontalCalendar horizontalCalendar = new HorizontalCalendar.Builder(this, R.id.calendarView)
+                .range(startDate, endDate)
+                .datesNumberOnScreen(5)
+                .build();
+
+        horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
+            @Override
+            public void onDateSelected(Calendar date, int position) {
+                //do something
+            }
+        });
+
+        test_bar = findViewById(R.id.bottom_nav);
+        frameLayout = findViewById(R.id.main_frame);
         ImageView three_bars = findViewById(R.id.three_bars);
+
+        test_bar.setOnNavigationItemSelectedListener(navListener);
+        /*test_bar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {*/
+           /* @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId())
+                {
+                    case R.id.doctor_info:
+                        test_bar.setBackgroundResource(R.color.light_blue_600);
+                        setFragment(new TestFragment());
+                        return true;
+
+                    case R.id.home_icon:
+                        test_bar.setBackgroundResource(R.color.light_blue_900);
+                        return true;
+
+                    case R.id.refill_icon:
+                        test_bar.setBackgroundResource(R.color.light_blue_A400);
+                        return true;
+
+                }
+                return false;
+            }
+        });*/
 
         three_bars.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +94,46 @@ public class DocInfoActivity extends AppCompatActivity implements PopupMenu.OnMe
 
             }
         });
+    }
+
+    // fragments change here
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item)
+                {
+                    Fragment selectedFragment = null;
+
+                    switch (item.getItemId())
+                    {
+                        case R.id.home_icon:
+                            selectedFragment = new TestFragment();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,
+                                    selectedFragment).commit();
+                            break;
+
+                        case R.id.refill_icon:
+                            test_bar.setBackgroundResource(R.color.light_blue_600);
+                            selectedFragment = new NextFragment();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,
+                                    selectedFragment).commit();
+                            break;
+
+                        case R.id.doctor_info:
+                            test_bar.setBackgroundResource(R.color.black);
+                            break;
+                    }
+
+                    return true;
+                }
+            };
+
+    private void setFragment(Fragment fragment)
+    {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main_frame, fragment);
+        fragmentTransaction.commit();
+
     }
 
     public void showPopup(View v)
