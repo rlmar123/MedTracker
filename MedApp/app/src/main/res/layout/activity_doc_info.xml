@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="49dp"
-        android:background="@color/colorPrimary"
+        android:background="#000000"
         app:textColorSelected="#FFFF" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

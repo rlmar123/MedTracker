@@ -18,7 +18,9 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
@@ -50,7 +52,9 @@ public class DocInfoActivity extends AppCompatActivity implements PopupMenu.OnMe
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
-                //do something
+
+                Toast.makeText(DocInfoActivity.this, "TITLE" , Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -88,8 +92,8 @@ public class DocInfoActivity extends AppCompatActivity implements PopupMenu.OnMe
             public void onClick(View v)
             {
                 Toast.makeText(DocInfoActivity.this, "TITLE", Toast.LENGTH_LONG).show();
-               /* Intent intent = new Intent(DocInfoActivity.this, TitleActivity.class);
-                startActivity(intent);*/
+                Intent intent = new Intent(DocInfoActivity.this, TitleActivity.class);
+                startActivity(intent);
                 showPopup(v);
 
             }
@@ -136,6 +140,7 @@ public class DocInfoActivity extends AppCompatActivity implements PopupMenu.OnMe
 
     }
 
+    // this method displays the pop up menu from the top
     public void showPopup(View v)
     {
         PopupMenu the_pop = new PopupMenu(this, v);

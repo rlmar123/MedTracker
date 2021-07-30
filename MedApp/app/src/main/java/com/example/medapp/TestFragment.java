@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import devs.mulham.horizontalcalendar.HorizontalCalendar;
+import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 
 
 public class TestFragment extends Fragment
@@ -32,6 +34,9 @@ public class TestFragment extends Fragment
  @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
     {
+
+
+
         return inflater.inflate(R.layout.activity_fragment, container, false);
     }
 
