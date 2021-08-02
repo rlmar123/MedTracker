@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,11 +16,13 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.medapp.UI.RecyclerAdapt;
+import com.example.medapp.model.DocInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
@@ -31,10 +33,47 @@ public class DocInfoActivity extends AppCompatActivity implements PopupMenu.OnMe
     BottomNavigationView test_bar;
     FrameLayout frameLayout;
 
+    private RecyclerView recycler_view = null;
+    private RecyclerAdapt recycler_adapter= null;
+
+
+    //data storage
+    private List<DocInfo> our_item_list = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_info);
+
+        //connect to activity_my_list.xml widget
+        recycler_view = findViewById(R.id.test_recycler);
+        recycler_view.setHasFixedSize(true);
+        recycler_view.setLayoutManager(new LinearLayoutManager(this));
+
+        our_item_list = new ArrayList<>();
+
+        our_item_list.add(new DocInfo("Jeff", "jim", "123 main st", "brpnx, ny", "9999999"));
+        our_item_list.add(new DocInfo("Jeff", "jim", "123 main st", "brpnx, ny", "9999999"));
+        our_item_list.add(new DocInfo("Jeff", "jim", "123 main st", "brpnx, ny", "9999999"));
+        our_item_list.add(new DocInfo("Jeff", "jim", "123 main st", "brpnx, ny", "9999999"));
+        our_item_list.add(new DocInfo("Jeff", "jim", "123 main st", "brpnx, ny", "9999999"));
+        our_item_list.add(new DocInfo("Jeff", "jim", "123 main st", "brpnx, ny", "9999999"));
+
+        our_item_list.add(new DocInfo("Jeff", "jim", "123 main st", "brpnx, ny", "9999999"));
+        our_item_list.add(new DocInfo("Jeff", "jim", "123 main st", "brpnx, ny", "9999999"));
+        our_item_list.add(new DocInfo("Jeff", "jim", "123 main st", "brpnx, ny", "9999999"));
+        our_item_list.add(new DocInfo("Jeff", "jim", "123 main st", "brpnx, ny", "9999999"));
+        our_item_list.add(new DocInfo("Jeff", "jim", "123 main st", "brpnx, ny", "9999999"));
+        our_item_list.add(new DocInfo("Jeff", "jim", "123 main st", "brpnx, ny", "9999999"));
+
+
+        //setup recycler_adapter
+        recycler_adapter = new RecyclerAdapt(this, our_item_list);
+        recycler_view.setAdapter(recycler_adapter);
+
+
+        //keeps data up to date
+        recycler_adapter.notifyDataSetChanged();
 
         /* starts before 1 month from now */
         Calendar startDate = Calendar.getInstance();

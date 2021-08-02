@@ -1,4 +1,4 @@
-
+package com.example.medapp.model;
 
 
 public class DocInfo
@@ -28,4 +28,19 @@ public class DocInfo
         this.phone_number = phone_number;
 
     }
+
+    public String getFirstName()
+        {return first_name;}
+
+    public String getLastName()
+        {return last_name;}
+
+    public String getAddress()
+        {return address;}
+
+    public String getCityState()
+       {return city_state;}
+
+    public String getPhoneNumber()
+       {return phone_number;}
 }
