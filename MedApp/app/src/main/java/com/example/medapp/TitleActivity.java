@@ -63,8 +63,7 @@ public class TitleActivity extends AppCompatActivity implements PopupMenu.OnMenu
             @Override
             public void onClick(View v) {
                 Toast.makeText(TitleActivity.this, "settigss", Toast.LENGTH_LONG).show();
-                showPopup(v);
-          //      textView.setText("YEAH!!!!!!!!!!!");
+
             }
         });
 

@@ -198,9 +198,11 @@ public class DocInfoActivity extends AppCompatActivity implements PopupMenu.OnMe
                 return true;*/
             case R.id.Doc_Info:
                 Toast.makeText(this, "from doc info", Toast.LENGTH_SHORT).show();
-             //   Intent intent = new Intent(TitleActivity.this, DocInfoActivity.class);
-           //     startActivity(intent);
-
+            /*    Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT,"This is from the med app");
+                intent.putExtra(Intent.EXTRA_SUBJECT,"This is from the med app");
+                startActivity(intent);*/
                 return true;
 
             case R.id.Refill:

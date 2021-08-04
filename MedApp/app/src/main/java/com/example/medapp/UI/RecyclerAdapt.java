@@ -4,12 +4,15 @@ package com.example.medapp.UI;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -73,8 +76,8 @@ public class RecyclerAdapt extends RecyclerView.Adapter<RecyclerAdapt.ViewHolder
         public TextView first = null;
         public TextView last = null;
 
-        public Button editButton = null;
-        public Button deleteButton = null;
+        public Button phoneButton = null;
+        public Button emailButton = null;
 
         public int id;
 
@@ -87,14 +90,14 @@ public class RecyclerAdapt extends RecyclerView.Adapter<RecyclerAdapt.ViewHolder
             last = itemView.findViewById(R.id.l_name);
           /*  itemColor = itemView.findViewById(R.id.color_text);
             itemSize = itemView.findViewById(R.id.item_size);
-            dateAdded = itemView.findViewById(R.id.date_item_added);
+            dateAdded = itemView.findViewById(R.id.date_item_added); */
 
-            editButton = itemView.findViewById(R.id.the_edit_button);
-            deleteButton = itemView.findViewById(R.id.the_delete_button);*/
+            phoneButton = itemView.findViewById(R.id.the_phone_button);
+            emailButton = itemView.findViewById(R.id.the_email_button);
 
 
-         //   editButton.setOnClickListener(this);
-        //    deleteButton.setOnClickListener(this);
+            phoneButton.setOnClickListener(this);
+            emailButton.setOnClickListener(this);
         }
 
         @Override
@@ -105,15 +108,25 @@ public class RecyclerAdapt extends RecyclerView.Adapter<RecyclerAdapt.ViewHolder
 
             switch (v.getId())
             {
-                /*case R.id.the_edit_button:
+                case R.id.the_phone_button:
 
-                    listEditItem(click_item);
+                    Toast.makeText(the_context, "phone", Toast.LENGTH_LONG).show();
+
+                    Intent the_intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "777-222-2222"));
+                    the_context.startActivity(the_intent);
+
+
+                break;
+
+                case R.id.the_email_button:
+
+                 Toast.makeText(the_context, "Email", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TEXT,"This is from the med app");
+                    intent.putExtra(Intent.EXTRA_SUBJECT,"This is from the med app");
+                    the_context.startActivity(intent);
                     break;
-
-                case R.id.the_delete_button:
-
-                    listdeleteItem(click_item);
-                    break;*/
 
             } //end switch
         }
